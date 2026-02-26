@@ -78,7 +78,7 @@ CONVERSATION CONTEXT (most recent):
 
 TASK:
 - Extract ONLY what helps answer the student question.
-- Summarize in 1–3 sentences.
+- Summarize in 2–5 sentences.
 - If answering with a list would make sense, such as a list of clubs or events, you may add that after the summary.
 - Do NOT copy page text or UI/navigation labels.
 
@@ -95,10 +95,14 @@ STUDENT QUESTION:
 
 
 #def generate_answer(question: str, context: str) -> str:
-def generate_answer(question: str, context: str, category: str, history: list[dict]) -> str:
+#def generate_answer(question: str, context: str, category: str, history: list[dict]) -> str:
+def generate_answer(question: str, context: str, category: str, history: list[dict], allowed_urls: list[str]) -> str:
     chunks = chunk_text(context)
 
     history_block = format_history(history)
+    allowed_links_block = ""
+    if allowed_urls:
+        allowed_links_block = "ALLOWED LINKS (you may only use these exact URLs):\n" + "\n".join(allowed_urls[:8])
 
     style_hint = ""
     if category == "advising":
@@ -153,6 +157,12 @@ Respond in a natural, conversational tone for students.
 
 CONVERSATION CONTEXT (most recent):
 {history_block}
+
+{allowed_links_block}
+LINK RULES:
+- Only include links from ALLOWED LINKS above.
+- Never invent, guess, rewrite, or “pretty print” URLs.
+- If no ALLOWED LINKS are relevant, do not include any links.
 
 Combine the partial answers into ONE clear answer.
 - Remove duplicates

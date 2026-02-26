@@ -19,6 +19,16 @@ UNIVERSITY_SOURCES = {
     "engineering_news": [
         "https://www.siue.edu/engineering/about/news/index.shtml"
     ],
+    "tutoring": [
+        "https://www.siue.edu/lss/tutoring-resource-center/",
+        "https://www.siue.edu/lss/supplemental-instruction/index.shtml",
+    ],
+
+    "counseling": [
+        "https://www.siue.edu/counseling-health/",
+        "https://www.siue.edu/counseling-health/about/index.shtml",
+        "https://www.siue.edu/counseling-health/type-of-visit/index.shtml"
+    ],
     "general": [
         "https://www.siue.edu/",
         "https://www.siue.edu/about/",
