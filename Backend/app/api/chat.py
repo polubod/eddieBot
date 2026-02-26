@@ -42,10 +42,13 @@ def chat_endpoint(request: ChatRequest):
     history = memory_store.get(session_id)
 
     if not context:
-        reply = (
-            "I couldn't find specific university information for that question yet. "
-            "Try asking about events, clubs, or advising."
-        )
+        reply = generate_answer(
+                question=request.message,
+                context= "Answer with only your existing knowledge, as no relevant SIUE webpage information was found. DO not provide any information that you could not be reasonably expected to know without access to the web. If you do not know, say so and suggest where to check (official SIUE site) or ask a clarifying question any URLs in this response.",
+                category=category,
+                history=history,
+                allowed_urls = []
+            )
     else:
         try:
             allowed_urls = UNIVERSITY_SOURCES.get(category, [])

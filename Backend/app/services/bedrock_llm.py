@@ -144,8 +144,8 @@ def generate_answer(question: str, context: str, category: str, history: list[di
         if ans.strip().upper() != "NOT_FOUND":
             partial_answers.append(ans)
 
-    if not partial_answers:
-        return "I couldn't find specific information on SIUE pages to answer that question."
+    # if not partial_answers:
+    #     return "I couldn't find specific information on SIUE pages to answer that question."
 
     synthesis_prompt = f"""
 
