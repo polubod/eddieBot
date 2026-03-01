@@ -1,0 +1,18 @@
+[run]
+source = app
+branch = true
+omit =
+    */tests/*
+    */__pycache__/*
+
+[report]
+fail_under = 95
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if TYPE_CHECKING:
+    if __name__ == .__main__.:
+
+[html]
+directory = htmlcov
