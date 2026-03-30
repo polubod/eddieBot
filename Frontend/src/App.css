@@ -3,6 +3,9 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: url('/SIUESkyView.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 /* Header - same structure, nicer type */
@@ -27,6 +30,7 @@
   margin: 0;
   line-height: 1;
   letter-spacing: -0.01em;
+  color: #ffffff;
 }
 
 /* Chat area - same structure */
@@ -181,12 +185,12 @@
 
 /* Disclaimer - same structure, nicer type */
 .disclaimer {
-  padding: 10px 12px;
-  font-size: 12px;
+  padding: 5px 12px;
+  font-size: 11px;
   color: #dad8d8;
   background: #353434;
   border-top: 1px solid #353434;
   text-align: center;
-  line-height: 1.45;
+  line-height: 1.3;
   letter-spacing: 0.02em;
 }

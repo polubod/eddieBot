@@ -21,8 +21,6 @@ def classify_query(message: str) -> str:
     if any(k in m for k in ["engineering news", "soe news", "siue engineering", "school of engineering update"]):
         return "engineering_news"
 
-
-
     if any(k in m for k in ["event", "calendar", "competition", "workshop", "seminar"]):
         return "events"
 
