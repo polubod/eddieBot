@@ -10,10 +10,12 @@ def check_request(message: str) -> tuple[bool, str]:
         "vote", "election", "democrat", "republican", "trump", "biden", "politics",
         # hate/harassment
         "hate", "racist", "slur",
-        # violence / self-harm
-        "kill", "suicide", "self harm", "bomb", "weapon", "gun",
+        # violence / threats (specific phrases only to avoid false positives)
+        "i want to kill", "going to kill", "bomb threat", "school shooting",
+        # weapons in a threatening context
+        "bomb", "weapon",
         # explicit sexual content
-        "porn", "sex",
+        "porn",
     ]
     crisis_keywords = ["suicide", "self harm", "kill myself", "hurt myself"]
     if any(k in m for k in crisis_keywords):

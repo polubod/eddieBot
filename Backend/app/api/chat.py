@@ -1,3 +1,4 @@
+import asyncio
 from fastapi import APIRouter
 from pydantic import BaseModel
 
@@ -22,8 +23,7 @@ class ChatResponse(BaseModel):
 
 
 @router.post("/chat", response_model=ChatResponse)
-def chat_endpoint(request: ChatRequest):
-    # Get session ID once, early
+async def chat_endpoint(request: ChatRequest):
     session_id = getattr(request, "session_id", None) or "dev-session"
 
     allowed, blocked_reply = check_request(request.message)
@@ -32,32 +32,30 @@ def chat_endpoint(request: ChatRequest):
         memory_store.add(session_id, "assistant", blocked_reply)
         return ChatResponse(reply=blocked_reply, category="blocked")
 
-    # Store the user's message FIRST so history includes it
     memory_store.add(session_id, "user", request.message)
 
     category = classify_query(request.message)
-    context = retrieve_context(category, request.message)
-
-    # Now history contains the latest user message
+    context = await asyncio.to_thread(retrieve_context, category, request.message)
     history = memory_store.get(session_id)
 
     if not context:
-        reply = generate_answer(
-                question=request.message,
-                context= "Answer with only your existing knowledge, as no relevant SIUE webpage information was found. DO not provide any information that you could not be reasonably expected to know without access to the web. If you do not know, say so and suggest where to check (official SIUE site) or ask a clarifying question any URLs in this response.",
-                category=category,
-                history=history,
-                allowed_urls = []
-            )
+        reply = await asyncio.to_thread(
+            generate_answer,
+            question=request.message,
+            context="Answer with only your existing knowledge, as no relevant SIUE webpage information was found. Do not provide any information that you could not be reasonably expected to know. If you do not know, say so and suggest where to check (the official SIUE site) or ask a clarifying question.",
+            category=category,
+            history=history,
+            allowed_urls=[],
+        )
     else:
         try:
-            allowed_urls = UNIVERSITY_SOURCES.get(category, [])
-            reply = generate_answer(
+            reply = await asyncio.to_thread(
+                generate_answer,
                 question=request.message,
                 context=context,
                 category=category,
                 history=history,
-                allowed_urls = UNIVERSITY_SOURCES.get(category, [])
+                allowed_urls=UNIVERSITY_SOURCES.get(category, []),
             )
         except Exception as e:
             print("[BEDROCK ERROR]", e)
@@ -66,7 +64,10 @@ def chat_endpoint(request: ChatRequest):
                 "Please try again shortly."
             )
 
-    # Store assistant reply after generating it
     memory_store.add(session_id, "assistant", reply)
-
     return ChatResponse(reply=reply, category=category)
+
+
+# Kept for reference — streaming endpoint, not currently used
+# @router.post("/chat/stream")
+# async def chat_stream_endpoint(request: ChatRequest): ...
