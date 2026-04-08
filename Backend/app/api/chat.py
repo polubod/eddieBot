@@ -7,7 +7,6 @@ from app.services.retrieval import retrieve_context
 from app.services.memory_singleton import memory_store
 from app.services.bedrock_llm import generate_answer
 from app.services.safety_guard import check_request
-from app.services.sources import UNIVERSITY_SOURCES
 
 router = APIRouter()
 
@@ -35,7 +34,7 @@ async def chat_endpoint(request: ChatRequest):
     memory_store.add(session_id, "user", request.message)
 
     category = classify_query(request.message)
-    context = await asyncio.to_thread(retrieve_context, category, request.message)
+    context, fetched_urls = await asyncio.to_thread(retrieve_context, category, request.message)
     history = memory_store.get(session_id)
 
     if not context:
@@ -55,7 +54,7 @@ async def chat_endpoint(request: ChatRequest):
                 context=context,
                 category=category,
                 history=history,
-                allowed_urls=UNIVERSITY_SOURCES.get(category, []),
+                allowed_urls=fetched_urls,
             )
         except Exception as e:
             print("[BEDROCK ERROR]", e)

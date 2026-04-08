@@ -17,7 +17,13 @@ Rules:
 - Use the provided SIUE webpage information when available.
 - If you do not know, say so and suggest where to check (official SIUE site) or ask a clarifying question.
 - Do not invent facts, dates, or policies.
-- NEVER invent, guess, or rephrase URLs. Only use URLs that are explicitly provided to you.
+
+URL RULES (strictly enforced):
+- NEVER write a URL unless it appears word-for-word in the ALLOWED LINKS list you are given.
+- Do not construct, guess, shorten, reformat, or paraphrase any URL.
+- Do not append paths to a base URL you were given (e.g. do not turn siue.edu into siue.edu/library).
+- If no ALLOWED LINKS are provided, do not include any URLs at all.
+- Including an invented or modified URL is a critical error.
 """
 
 def format_history(history: list[dict], max_chars: int = 2500) -> str:
@@ -27,6 +33,21 @@ def format_history(history: list[dict], max_chars: int = 2500) -> str:
         lines.append(f"{role}: {m['text']}")
     text = "\n".join(lines)
     return text[-max_chars:]
+
+
+def _strip_unauthorized_urls(text: str, allowed_urls: list[str]) -> str:
+    """
+    Post-generation safety net: removes any http/https URL from the response
+    that is not in the allowed_urls list.
+    """
+    url_pattern = re.compile(r'https?://\S+')
+    allowed_set = set(allowed_urls)
+
+    def _replace(match: re.Match) -> str:
+        url = match.group(0).rstrip('.,)>"\'')
+        return url if url in allowed_set else ''
+
+    return re.sub(url_pattern, _replace, text)
 
 
 def chunk_text(text: str, chunk_size: int = 1200, overlap: int = 100) -> list[str]:
@@ -69,7 +90,11 @@ def _converse(prompt: str, max_tokens: int) -> str:
         raise
 
 
-def answer_from_chunk(question: str, chunk: str, history_block: str) -> str:
+def answer_from_chunk(question: str, chunk: str, history_block: str, allowed_urls: list[str] | None = None) -> str:
+    allowed_block = ""
+    if allowed_urls:
+        allowed_block = "ALLOWED LINKS (only these may appear in the final answer — do NOT include them here):\n" + "\n".join(allowed_urls)
+
     prompt = f"""
 
 {SYSTEM_POLICY}
@@ -77,13 +102,15 @@ def answer_from_chunk(question: str, chunk: str, history_block: str) -> str:
 CONVERSATION CONTEXT (most recent):
 {history_block}
 
+{allowed_block}
+
 TASK:
-- Consider the conversation context above to understand what the student is really asking (e.g. if they say "tell me more", use the prior messages to understand the topic).
+- Consider the conversation context above to understand what the student is really asking.
 - Extract ONLY what helps answer the student question given that context.
 - If the question asks about specific resources, services, hours, locations, or items, extract and LIST them concretely with names and relevant details (e.g., hours, room numbers, contact info).
 - For general or conversational questions, summarize in 2–5 sentences.
 - Do NOT copy page text or UI/navigation labels.
-- If a relevant URL is present in the source material, note it so it can be included in the final answer.
+- Do NOT write any URLs in your response. URLs will be added separately.
 
 If the information is not present, respond with EXACTLY:
 NOT_FOUND
@@ -239,13 +266,13 @@ def generate_answer_stream(question: str, context: str, category: str, history: 
 
     allowed_links_block = ""
     if allowed_urls:
-        allowed_links_block = "ALLOWED LINKS (you may only use these exact URLs):\n" + "\n".join(allowed_urls[:8])
+        allowed_links_block = "ALLOWED LINKS (you may only use these exact URLs):\n" + "\n".join(allowed_urls)
 
     style_hint = _build_style_hint(category)
 
     partial_answers: list[str] = []
     for chunk in chunks[:5]:
-        ans = answer_from_chunk(question, chunk, history_block)
+        ans = answer_from_chunk(question, chunk, history_block, allowed_urls)
         if ans.strip().upper() != "NOT_FOUND":
             partial_answers.append(ans)
 
@@ -261,10 +288,17 @@ CONVERSATION CONTEXT (most recent):
 {history_block}
 
 {allowed_links_block}
-LINK RULES:
-- Only include links from ALLOWED LINKS above.
-- Never invent, guess, rewrite, or "pretty print" URLs.
-- If no ALLOWED LINKS are relevant, do not include any links.
+LINK RULES (critical):
+- You may ONLY use URLs from the ALLOWED LINKS list above, copied exactly character-for-character.
+- Do NOT construct, modify, shorten, or infer any URL.
+- Do NOT use any URL that appears in the partial answers — those are not verified.
+- If no ALLOWED LINKS are provided, do not include any URLs.
+
+LINK USAGE (important):
+- Include links generously throughout the answer wherever they are relevant — do not save them all for the end.
+- If a bullet point describes a service or resource, append its most relevant ALLOWED LINK inline on that bullet.
+- Always close the answer with the single most relevant ALLOWED LINK as a "Learn more" or "For more info" line.
+- Using multiple links from ALLOWED LINKS in one answer is encouraged when each adds value.
 
 Combine the partial answers into ONE clear answer.
 - Remove duplicates
@@ -272,7 +306,6 @@ Combine the partial answers into ONE clear answer.
 - For general or conversational questions, use plain prose (2–4 sentences).
 - Do NOT invent new information
 - Answer the student directly. Do not quote webpage text
-- Always end with a relevant URL from ALLOWED LINKS if one is available.
 
 PARTIAL ANSWERS:
 {chr(10).join(partial_answers)}

@@ -28,14 +28,16 @@ def select_sources(category: str, message: str) -> list[str]:
 
     return picked[:3]  # cap for speed/quality
 
-def retrieve_context(category: str, message: str) -> str:
+def retrieve_context(category: str, message: str) -> tuple[str, list[str]]:
     urls = select_sources(category, message)
 
     texts = []
+    fetched_urls = []
     for url in urls:
         try:
             texts.append(fetch_page_text(url))
+            fetched_urls.append(url)
         except Exception as e:
             print("[FETCH ERROR]", url, e)
 
-    return "\n\n".join(texts)
+    return "\n\n".join(texts), fetched_urls
