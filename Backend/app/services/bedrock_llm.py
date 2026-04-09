@@ -2,7 +2,7 @@ import re
 import boto3
 from botocore.exceptions import ClientError
 
-# Pick one:
+# Use your own Bedrock model ID or inference-profile ARN from the console—this ARN embeds a specific AWS account ID and will not work for other accounts.
 MODEL_ID = "arn:aws:bedrock:us-west-2:323441263732:inference-profile/us.amazon.nova-pro-v1:0" #amazon.nova-pro-v1:0" 
 
 bedrock = boto3.client("bedrock-runtime", region_name="us-west-2")
