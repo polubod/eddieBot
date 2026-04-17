@@ -1,0 +1,409 @@
+* commit 5918ea5b5ebaf583258883637b9c75c89bee444b (HEAD -> main, origin/main)
+| Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| Date:   Fri Apr 17 15:50:38 2026 -0500
+| 
+|     Pulled latest coverage report
+| 
+|  Backend/.coverage                                 | Bin 69632 -> 69632 bytes
+|  .../__pycache__/bedrock_llm.cpython-314.pyc       | Bin 15291 -> 15291 bytes
+|  ...9d256f94b4095382582d52bb4f04ab5e3ecb01298.json |   2 +-
+|  ...8a9dfb1fc74010dc3eb898c93080050773470e46e.json |   2 +-
+|  ...197d4c73646e7904f3c17d3bfb52b6c06e9ecda08.json |   2 +-
+|  ...4e13ccfdca59b054bb7ffa831415f17bb337e283d.json |   2 +-
+|  ...872de0ae34a3f800fa01edb1fa1ab35cc1f9793ff.json |   2 +-
+|  ...6d70d953f140d44fa9ae0fb9580dfc1b7513109c9.json |   2 +-
+|  ...77d6a61e5ed5d3b7b32434309694cc0487e47b162.json |   2 +-
+|  ...6a0241696d3a8e155680f671c07c90a95b3b8cef0.json |   2 +-
+|  ...e49912deaf9b33f8810a4d7986ca331b9f17ec075.json |   2 +-
+|  ...bcf0992af635defbaa3ef52cb57044b30ead01737.json |   2 +-
+|  ...1fd0e944e4c37d4469d10c0eb4a61c8e656ab2d68.json |   2 +-
+|  ...79c526f59440fa73daba01b7daf63289d68044fc7.json |   2 +-
+|  ...1759d6965c3a9da3b22ee4627657c22fe338e24e4.json |   2 +-
+|  ...a9dfe750945f0487bb2bd391354f96aecde329f6d.json |   2 +-
+|  .../conftest.cpython-314-pytest-9.0.2.pyc         | Bin 2873 -> 2935 bytes
+|  .../test_chat.cpython-314-pytest-9.0.2.pyc        | Bin 16483 -> 16491 bytes
+|  Backend/tests/api/test_chat.py                    |   2 +-
+|  Backend/tests/conftest.py                         |   2 +-
+|  Backend/tests/coverage.xml                        | 394 ++++++++++++++++++++
+|  test_index.html                                   | 283 ++++++++++++++
+|  22 files changed, 693 insertions(+), 16 deletions(-)
+| 
+* commit 8d8d437a8a115e88a7b065c3e121e7c50c02b412
+| Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| Date:   Thu Apr 9 16:57:37 2026 -0500
+| 
+|     Wrote README Documentation
+| 
+|  .../__pycache__/bedrock_llm.cpython-314.pyc       | Bin 14931 -> 15291 bytes
+|  Backend/app/services/bedrock_llm.py               |   2 +-
+|  ...4508e6c8479c232a903ea843db7f93a0b0aeadf3f.json |   2 +-
+|  ...26de30a6f0e0210570b95df1666189dd26449d446.json |   2 +-
+|  ...52544c8e302ed71b20c87114f4e4ca4bb3dfcbd7a.json |   2 +-
+|  ...f3a5797ae06c54145c2ac5a887f1e03c42d997370.json |   2 +-
+|  README.md                                         | 256 +++++++++++++++++++-
+|  7 files changed, 260 insertions(+), 6 deletions(-)
+|   
+*   commit 8d394a032b7faedbb9e9183ad50936a323ac4921
+|\  Merge: 0c8c766 8468add
+| | Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| | Date:   Tue Apr 7 21:59:54 2026 -0500
+| | 
+| |     Merge branch 'main' of https://github.com/polubod/eddieBot
+| | 
+| * commit 8468add5526f41c907b68864856f96e690fec4ac
+| | Author: Group14 <roballa@siue.edu>
+| | Date:   Tue Apr 7 13:10:05 2026 -0500
+| | 
+| |     Added root README and backend gitignore
+| | 
+| |  Backend/.gitignore | 12 ++++++++++++
+| |  README.md          | 11 +++++++++++
+| |  2 files changed, 23 insertions(+)
+| | 
+* | commit 0c8c7663d266c705860d174241a2fa1380cc6ccc
+|/  Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+|   Date:   Tue Apr 7 21:58:44 2026 -0500
+|   
+|       Expanded Sources and improved backend
+|   
+|    Backend/app/api/__pycache__/chat.cpython-314.pyc | Bin 4033 -> 3927 bytes
+|    Backend/app/api/chat.py                          |   5 +-
+|    .../__pycache__/bedrock_llm.cpython-314.pyc      | Bin 12961 -> 14931 bytes
+|    .../__pycache__/retrieval.cpython-314.pyc        | Bin 2664 -> 2819 bytes
+|    Backend/app/services/bedrock_llm.py              |  55 +++++++++++++++----
+|    Backend/app/services/retrieval.py                |   6 +-
+|    ...72de0ae34a3f800fa01edb1fa1ab35cc1f9793ff.json |   2 +-
+|    ...d70d953f140d44fa9ae0fb9580dfc1b7513109c9.json |   2 +-
+|    ...cab89f84acda36e4da791855676499eb912dc262.json |   1 +
+|    ...92562bbf7a733b6daf5238f75197c3903c0c3552.json |   1 +
+|    ...ad20e5a82cf1efd1231dde0b5629a320822d0243.json |   2 +-
+|    ...55249771437dfbc2b306ec4ea3b0fc2efb87c7bb.json |   1 +
+|    ...759d6965c3a9da3b22ee4627657c22fe338e24e4.json |   2 +-
+|    13 files changed, 57 insertions(+), 20 deletions(-)
+| 
+* commit 56b1c40705194601c7e44d4466afc34a32cdc2e6
+| Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| Date:   Tue Mar 31 14:56:03 2026 -0500
+| 
+|     Model fine tuning
+| 
+|  Backend/app/api/__pycache__/chat.cpython-314.pyc  | Bin 3821 -> 4033 bytes
+|  Backend/app/api/chat.py                           |  37 ++--
+|  .../__pycache__/bedrock_llm.cpython-314.pyc       | Bin 7169 -> 12961 bytes
+|  .../__pycache__/query_classifier.cpython-314.pyc  | Bin 3111 -> 6248 bytes
+|  .../__pycache__/safety_guard.cpython-314.pyc      | Bin 2096 -> 2131 bytes
+|  .../services/__pycache__/sources.cpython-314.pyc  | Bin 1613 -> 2881 bytes
+|  Backend/app/services/bedrock_llm.py               | 183 ++++++++++++++++----
+|  Backend/app/services/query_classifier.py          |  71 ++++++--
+|  Backend/app/services/safety_guard.py              |   8 +-
+|  Backend/app/services/sources.py                   |  36 +++-
+|  ...9d256f94b4095382582d52bb4f04ab5e3ecb01298.json |   2 +-
+|  ...8a9dfb1fc74010dc3eb898c93080050773470e46e.json |   2 +-
+|  ...197d4c73646e7904f3c17d3bfb52b6c06e9ecda08.json |   2 +-
+|  ...4e13ccfdca59b054bb7ffa831415f17bb337e283d.json |   2 +-
+|  ...872de0ae34a3f800fa01edb1fa1ab35cc1f9793ff.json |   2 +-
+|  ...4508e6c8479c232a903ea843db7f93a0b0aeadf3f.json |   1 +
+|  ...6d70d953f140d44fa9ae0fb9580dfc1b7513109c9.json |   2 +-
+|  ...77d6a61e5ed5d3b7b32434309694cc0487e47b162.json |   2 +-
+|  ...6a0241696d3a8e155680f671c07c90a95b3b8cef0.json |   2 +-
+|  ...e49912deaf9b33f8810a4d7986ca331b9f17ec075.json |   2 +-
+|  ...4a35da79b1a1e892fff690d0f4a38e5ce76c07ee8.json |   1 +
+|  ...26de30a6f0e0210570b95df1666189dd26449d446.json |   1 +
+|  ...bcf0992af635defbaa3ef52cb57044b30ead01737.json |   2 +-
+|  ...1fd0e944e4c37d4469d10c0eb4a61c8e656ab2d68.json |   2 +-
+|  ...53636fbcf509eb99558ebd398e06980f5a219bf35.json |   2 +-
+|  ...1d7a6369e9d5d3ebc6855f44772614091688d644c.json |   1 +
+|  ...52544c8e302ed71b20c87114f4e4ca4bb3dfcbd7a.json |   1 +
+|  ...dda54330248c99f33976f2a4cffc345e7da1aa81e.json |   1 +
+|  ...1759d6965c3a9da3b22ee4627657c22fe338e24e4.json |   2 +-
+|  ...f3a5797ae06c54145c2ac5a887f1e03c42d997370.json |   1 +
+|  ...a9dfe750945f0487bb2bd391354f96aecde329f6d.json |   2 +-
+|  Frontend/src/services/chatApi.js                  |  57 ++++++
+|  32 files changed, 346 insertions(+), 81 deletions(-)
+|   
+*   commit 87454a86940d3134741e57ccc956c8735ae06d64
+|\  Merge: fb32118 22193fc
+| | Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| | Date:   Mon Mar 30 14:05:19 2026 -0500
+| | 
+| |     Merge branch 'main' of https://github.com/polubod/eddieBot
+| | 
+| * commit 22193fc4ee4f6a3f4af7806233fb911be2068619
+| | Author: Group14 <roballa@siue.edu>
+| | Date:   Fri Mar 6 16:23:06 2026 -0600
+| | 
+| |     Added tests
+| | 
+| |  tests/__init__.py                                |   0
+| |  tests/__pycache__/__init__.cpython-313.pyc       | Bin 0 -> 158 bytes
+| |  tests/__pycache__/fakes.cpython-313.pyc          | Bin 0 -> 1154 bytes
+| |  .../test_app__unit.cpython-313-pytest-9.0.2.pyc  | Bin 0 -> 3150 bytes
+| |  .../test_chat_rout.cpython-313-pytest-9.0.2.pyc  | Bin 0 -> 4735 bytes
+| |  ...st_context_boxes.cpython-313-pytest-9.0.2.pyc | Bin 0 -> 3331 bytes
+| |  .../test_errors.cpython-313-pytest-9.0.2.pyc     | Bin 0 -> 3446 bytes
+| |  tests/fakes.py                                   |  14 ++++++++
+| |  tests/test_app__unit.py                          |  13 ++++++++
+| |  tests/test_chat_rout.py                          |  33 +++++++++++++++++++
+| |  tests/test_context_boxes.py                      |  18 ++++++++++
+| |  tests/test_errors.py                             |  21 ++++++++++++
+| |  12 files changed, 99 insertions(+)
+| | 
+* | commit fb32118123192d2b8d20dd79fb53a38c0be3c7c5
+|/  Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+|   Date:   Mon Mar 30 14:03:52 2026 -0500
+|   
+|       Improved Visuals in UI
+|   
+|    ...est_bedrock_call.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 1312 bytes
+|    .../test_scraper.cpython-314-pytest-9.0.2.pyc    | Bin 0 -> 498 bytes
+|    .../__pycache__/query_classifier.cpython-314.pyc | Bin 3113 -> 3111 bytes
+|    Backend/app/services/query_classifier.py         |   2 -
+|    ...d256f94b4095382582d52bb4f04ab5e3ecb01298.json |   2 +-
+|    ...a9dfb1fc74010dc3eb898c93080050773470e46e.json |   2 +-
+|    ...97d4c73646e7904f3c17d3bfb52b6c06e9ecda08.json |   2 +-
+|    ...e13ccfdca59b054bb7ffa831415f17bb337e283d.json |   2 +-
+|    ...72de0ae34a3f800fa01edb1fa1ab35cc1f9793ff.json |   2 +-
+|    ...d70d953f140d44fa9ae0fb9580dfc1b7513109c9.json |   2 +-
+|    ...7d6a61e5ed5d3b7b32434309694cc0487e47b162.json |   2 +-
+|    ...a0241696d3a8e155680f671c07c90a95b3b8cef0.json |   2 +-
+|    ...49912deaf9b33f8810a4d7986ca331b9f17ec075.json |   2 +-
+|    ...cf0992af635defbaa3ef52cb57044b30ead01737.json |   2 +-
+|    ...fd0e944e4c37d4469d10c0eb4a61c8e656ab2d68.json |   2 +-
+|    ...ad20e5a82cf1efd1231dde0b5629a320822d0243.json |   2 +-
+|    ...9c526f59440fa73daba01b7daf63289d68044fc7.json |   2 +-
+|    ...759d6965c3a9da3b22ee4627657c22fe338e24e4.json |   2 +-
+|    ...9dfe750945f0487bb2bd391354f96aecde329f6d.json |   2 +-
+|    Backend/requirements.txt                         | 256 +++++++------------
+|    Backend/tests/.coverage                          | Bin 0 -> 53248 bytes
+|    .../tests/__pycache__/__init__.cpython-314.pyc   | Bin 0 -> 172 bytes
+|    .../conftest.cpython-314-pytest-9.0.2.pyc        | Bin 0 -> 2873 bytes
+|    .../api/__pycache__/__init__.cpython-314.pyc     | Bin 0 -> 176 bytes
+|    .../test_chat.cpython-314-pytest-9.0.2.pyc       | Bin 0 -> 16483 bytes
+|    .../test_fetch.cpython-314-pytest-9.0.2.pyc      | Bin 0 -> 12333 bytes
+|    .../test_main.cpython-314-pytest-9.0.2.pyc       | Bin 0 -> 5696 bytes
+|    .../e2e/__pycache__/__init__.cpython-314.pyc     | Bin 0 -> 176 bytes
+|    .../test_chat_flow.cpython-314-pytest-9.0.2.pyc  | Bin 0 -> 10110 bytes
+|    .../test_fetch_flow.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 9658 bytes
+|    ..._full_stack_flow.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 5125 bytes
+|    .../unit/__pycache__/__init__.cpython-314.pyc    | Bin 0 -> 177 bytes
+|    ...test_bedrock_llm.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 28819 bytes
+|    ...query_classifier.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 4550 bytes
+|    .../test_retrieval.cpython-314-pytest-9.0.2.pyc  | Bin 0 -> 20644 bytes
+|    ...est_safety_guard.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 9718 bytes
+|    ...t_session_memory.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 13937 bytes
+|    .../test_sources.cpython-314-pytest-9.0.2.pyc    | Bin 0 -> 5026 bytes
+|    ...test_web_fetcher.cpython-314-pytest-9.0.2.pyc | Bin 0 -> 23285 bytes
+|    Frontend/public/SIUESkyView.jpg                  | Bin 0 -> 429424 bytes
+|    Frontend/src/App.css                             |  10 +-
+|    Frontend/src/components/MessageContent.jsx       |  20 +-
+|    ...3636fbcf509eb99558ebd398e06980f5a219bf35.json |   1 +
+|    43 files changed, 132 insertions(+), 187 deletions(-)
+| 
+* commit c665d37a1d5073959ea5c9fd110aee3104c46f5f
+| Author: Frank Wember <127029813+FrankWember@users.noreply.github.com>
+| Date:   Sun Mar 1 16:07:21 2026 -0600
+| 
+|     Add initial test suite with unit, integration, and end-to-end tests for EddieBot backend, including coverage configuration and dependencies.
+| 
+|  Backend/.coverage                           | Bin 0 -> 69632 bytes
+|  Backend/.coveragerc                         |  18 ++++
+|  Backend/notes.txt                           |   2 -
+|  Backend/pytest.ini                          |  10 ++
+|  Backend/requirements-pip.txt                |   5 +
+|  Backend/tests/__init__.py                   |   1 +
+|  Backend/tests/api/__init__.py               |   1 +
+|  Backend/tests/api/test_chat.py              |  72 +++++++++++++
+|  Backend/tests/api/test_fetch.py             |  35 ++++++
+|  Backend/tests/api/test_main.py              |  21 ++++
+|  Backend/tests/conftest.py                   |  49 +++++++++
+|  Backend/tests/e2e/__init__.py               |   1 +
+|  Backend/tests/e2e/test_chat_flow.py         |  64 +++++++++++
+|  Backend/tests/e2e/test_fetch_flow.py        |  24 +++++
+|  Backend/tests/e2e/test_full_stack_flow.py   |  31 ++++++
+|  Backend/tests/unit/__init__.py              |   1 +
+|  Backend/tests/unit/test_bedrock_llm.py      | 141 ++++++++++++++++++++++++
+|  Backend/tests/unit/test_query_classifier.py |  43 ++++++++
+|  Backend/tests/unit/test_retrieval.py        |  79 ++++++++++++++
+|  Backend/tests/unit/test_safety_guard.py     |  50 +++++++++
+|  Backend/tests/unit/test_session_memory.py   |  55 ++++++++++
+|  Backend/tests/unit/test_sources.py          |  15 +++
+|  Backend/tests/unit/test_web_fetcher.py      | 148 ++++++++++++++++++++++++++
+|  23 files changed, 864 insertions(+), 2 deletions(-)
+| 
+* commit 62c2f26668c3df2f8b7e26291cc8adf85077c3ed
+| Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| Date:   Wed Feb 25 21:58:19 2026 -0600
+| 
+|     Chatbot now has more freedom, can answer general topics
+| 
+|  Backend/app/api/__pycache__/chat.cpython-314.pyc    | Bin 3532 -> 3821 bytes
+|  Backend/app/api/chat.py                             |  11 +++++++----
+|  .../__pycache__/bedrock_llm.cpython-314.pyc         | Bin 7274 -> 7169 bytes
+|  Backend/app/services/bedrock_llm.py                 |   4 ++--
+|  ...dd9500a22c10b69d5d1f235fc2aa149e100a1e33a22.json |   1 +
+|  ...d4f2b3e8a806ceb59787b0b7d25537ba1727ce9e9bc.json |   1 +
+|  ...244628ef572500a6e82cec15e4c236970aefa17447b.json |   1 +
+|  7 files changed, 12 insertions(+), 6 deletions(-)
+| 
+* commit f5c30098f4ebd134470b82bc3fc767617ed473bb
+| Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| Date:   Wed Feb 25 21:20:44 2026 -0600
+| 
+|     Added more source depth, minmized 404 errors on links
+| 
+|  Backend/app/api/__pycache__/chat.cpython-314.pyc  | Bin 3367 -> 3532 bytes
+|  Backend/app/api/chat.py                           |  34 +++++++++++---------
+|  .../__pycache__/bedrock_llm.cpython-314.pyc       | Bin 6807 -> 7274 bytes
+|  .../__pycache__/query_classifier.cpython-314.pyc  | Bin 2160 -> 3113 bytes
+|  .../__pycache__/safety_guard.cpython-314.pyc      | Bin 1404 -> 2096 bytes
+|  .../services/__pycache__/sources.cpython-314.pyc  | Bin 1274 -> 1613 bytes
+|  Backend/app/services/bedrock_llm.py               |  14 ++++++--
+|  Backend/app/services/query_classifier.py          |  20 ++++++++++--
+|  Backend/app/services/safety_guard.py              |   7 ++++
+|  Backend/app/services/sources.py                   |  10 ++++++
+|  ...9d256f94b4095382582d52bb4f04ab5e3ecb01298.json |   2 +-
+|  ...8a9dfb1fc74010dc3eb898c93080050773470e46e.json |   2 +-
+|  ...197d4c73646e7904f3c17d3bfb52b6c06e9ecda08.json |   2 +-
+|  ...872de0ae34a3f800fa01edb1fa1ab35cc1f9793ff.json |   2 +-
+|  ...6d70d953f140d44fa9ae0fb9580dfc1b7513109c9.json |   2 +-
+|  ...6a0241696d3a8e155680f671c07c90a95b3b8cef0.json |   2 +-
+|  ...e49912deaf9b33f8810a4d7986ca331b9f17ec075.json |   2 +-
+|  ...ee19cd1a645c0725ad5b3831fd1c453045002cd95.json |   2 +-
+|  ...bcf0992af635defbaa3ef52cb57044b30ead01737.json |   1 +
+|  ...1fd0e944e4c37d4469d10c0eb4a61c8e656ab2d68.json |   2 +-
+|  ...79c526f59440fa73daba01b7daf63289d68044fc7.json |   2 +-
+|  ...1759d6965c3a9da3b22ee4627657c22fe338e24e4.json |   2 +-
+|  ...a9dfe750945f0487bb2bd391354f96aecde329f6d.json |   1 +
+|  23 files changed, 79 insertions(+), 30 deletions(-)
+| 
+* commit 6808343f5f6628373f7022787ceca613edfab8cf
+| Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+| Date:   Wed Feb 18 11:44:25 2026 -0600
+| 
+|     Added banner image and favicon
+| 
+|  .../__pycache__/web_fetcher.cpython-314.pyc         | Bin 6836 -> 6775 bytes
+|  ...6c9d256f94b4095382582d52bb4f04ab5e3ecb01298.json |   2 +-
+|  ...5f8a9dfb1fc74010dc3eb898c93080050773470e46e.json |   2 +-
+|  ...9e197d4c73646e7904f3c17d3bfb52b6c06e9ecda08.json |   2 +-
+|  ...91872de0ae34a3f800fa01edb1fa1ab35cc1f9793ff.json |   2 +-
+|  ...1f6d70d953f140d44fa9ae0fb9580dfc1b7513109c9.json |   2 +-
+|  ...d46a0241696d3a8e155680f671c07c90a95b3b8cef0.json |   2 +-
+|  ...2ae49912deaf9b33f8810a4d7986ca331b9f17ec075.json |   2 +-
+|  ...7c1fd0e944e4c37d4469d10c0eb4a61c8e656ab2d68.json |   2 +-
+|  ...941759d6965c3a9da3b22ee4627657c22fe338e24e4.json |   2 +-
+|  Frontend/index.html                                 |   2 +-
+|  Frontend/public/CougarSIUE.png                      | Bin 0 -> 6840 bytes
+|  Frontend/public/SIUE_Logo.png                       | Bin 0 -> 5150 bytes
+|  Frontend/src/components/Header.jsx                  |   2 +-
+|  14 files changed, 11 insertions(+), 11 deletions(-)
+| 
+* commit c39dd9ff4679128eb3fa47a21ebc72aaad202e38
+| Author: Frank Wember <127029813+FrankWember@users.noreply.github.com>
+| Date:   Tue Feb 17 15:12:25 2026 -0600
+| 
+|     Remove frontend EddieBot UI files and add future annotations import in web fetcher service.
+| 
+|  Backend/app/services/web_fetcher.py               |    2 +
+|  Backend/requirements-pip.txt                      |   11 +
+|  Frontend/{eddiebot-ui/eddiebot-ui => }/.gitignore |    0
+|  Frontend/eddiebot-ui/eddiebot-ui/README.md        |   16 -
+|  Frontend/eddiebot-ui/eddiebot-ui/index.html       |   13 -
+|  .../eddiebot-ui/eddiebot-ui/public/SiueCougar.png |  Bin 48381 -> 0 bytes
+|  Frontend/eddiebot-ui/eddiebot-ui/src/App.css      |  122 --
+|  Frontend/eddiebot-ui/eddiebot-ui/src/App.jsx      |  126 --
+|  .../eddiebot-ui/src/assets/SIUE_Logo.png          |  Bin 5150 -> 0 bytes
+|  .../eddiebot-ui/eddiebot-ui/src/assets/react.svg  |    1 -
+|  Frontend/eddiebot-ui/eddiebot-ui/src/index.css    |   69 -
+|  Frontend/eddiebot-ui/main.py                      |    0
+|  .../eddiebot-ui => }/eslint.config.js             |    0
+|  Frontend/index.html                               |   16 +
+|  .../eddiebot-ui => }/package-lock.json            | 1882 +++++++++++++++++--
+|  .../{eddiebot-ui/eddiebot-ui => }/package.json    |    4 +-
+|  .../{eddiebot-ui/eddiebot-ui => }/public/vite.svg |    2 +-
+|  Frontend/src/App.css                              |  192 ++
+|  Frontend/src/App.jsx                              |   31 +
+|  Frontend/src/components/ChatArea.jsx              |   35 +
+|  Frontend/src/components/Disclaimer.jsx            |    8 +
+|  Frontend/src/components/Header.jsx                |    8 +
+|  Frontend/src/components/InputBar.jsx              |   14 +
+|  Frontend/src/components/MessageContent.css        |  127 ++
+|  Frontend/src/components/MessageContent.jsx        |   21 +
+|  Frontend/src/config.js                            |    1 +
+|  Frontend/src/hooks/useChat.js                     |   55 +
+|  Frontend/src/index.css                            |   59 +
+|  .../{eddiebot-ui/eddiebot-ui => }/src/main.jsx    |    0
+|  Frontend/src/services/chatApi.js                  |   23 +
+|  Frontend/src/utils/session.js                     |   11 +
+|  .../{eddiebot-ui/eddiebot-ui => }/vite.config.js  |    0
+|  32 files changed, 2291 insertions(+), 558 deletions(-)
+| 
+* commit c3103df422a6be6589fe93e67562535c230855bf
+  Author: Ryan Bender <152329584+bendery13@users.noreply.github.com>
+  Date:   Tue Feb 17 14:53:31 2026 -0600
+  
+      Front and back end
+  
+   Backend/app/__pycache__/main.cpython-314.pyc      |  Bin 0 -> 1005 bytes
+   Backend/app/api/__pycache__/chat.cpython-314.pyc  |  Bin 0 -> 3367 bytes
+   Backend/app/api/__pycache__/fetch.cpython-314.pyc |  Bin 0 -> 992 bytes
+   Backend/app/api/chat.py                           |   65 +
+   Backend/app/api/fetch.py                          |   16 +
+   Backend/app/main.py                               |   24 +
+   .../__pycache__/bedrock_llm.cpython-314.pyc       |  Bin 0 -> 6807 bytes
+   .../__pycache__/memory_singleton.cpython-314.pyc  |  Bin 0 -> 351 bytes
+   .../__pycache__/query_classifier.cpython-314.pyc  |  Bin 0 -> 2160 bytes
+   .../__pycache__/retrieval.cpython-314.pyc         |  Bin 0 -> 2664 bytes
+   .../__pycache__/safety_guard.cpython-314.pyc      |  Bin 0 -> 1404 bytes
+   .../__pycache__/session_memory.cpython-314.pyc    |  Bin 0 -> 3942 bytes
+   .../services/__pycache__/sources.cpython-314.pyc  |  Bin 0 -> 1274 bytes
+   .../__pycache__/web_fetcher.cpython-313.pyc       |  Bin 0 -> 5699 bytes
+   .../__pycache__/web_fetcher.cpython-314.pyc       |  Bin 0 -> 6836 bytes
+   Backend/app/services/bedrock_llm.py               |  166 ++
+   Backend/app/services/memory_singleton.py          |    6 +
+   Backend/app/services/query_classifier.py          |   19 +
+   Backend/app/services/retrieval.py                 |   41 +
+   Backend/app/services/safety_guard.py              |   24 +
+   Backend/app/services/session_memory.py            |   43 +
+   Backend/app/services/sources.py                   |   32 +
+   Backend/app/services/web_fetcher.py               |  138 +
+   ...ea6c9ec51a609498a0562dd85aebb8a173100398a.json |    1 +
+   ...9d256f94b4095382582d52bb4f04ab5e3ecb01298.json |    1 +
+   ...8a9dfb1fc74010dc3eb898c93080050773470e46e.json |    1 +
+   ...197d4c73646e7904f3c17d3bfb52b6c06e9ecda08.json |    1 +
+   ...4e13ccfdca59b054bb7ffa831415f17bb337e283d.json |    1 +
+   ...872de0ae34a3f800fa01edb1fa1ab35cc1f9793ff.json |    1 +
+   ...6d70d953f140d44fa9ae0fb9580dfc1b7513109c9.json |    1 +
+   ...77d6a61e5ed5d3b7b32434309694cc0487e47b162.json |    1 +
+   ...6a0241696d3a8e155680f671c07c90a95b3b8cef0.json |    1 +
+   ...e49912deaf9b33f8810a4d7986ca331b9f17ec075.json |    1 +
+   ...e6df01be539c7575db04d10131cf015f6f4762277.json |    1 +
+   ...efe1918280fbd5904084eb130296190239df74b33.json |    1 +
+   ...ee19cd1a645c0725ad5b3831fd1c453045002cd95.json |    1 +
+   ...1fd0e944e4c37d4469d10c0eb4a61c8e656ab2d68.json |    1 +
+   ...53636fbcf509eb99558ebd398e06980f5a219bf35.json |    1 +
+   ...bad20e5a82cf1efd1231dde0b5629a320822d0243.json |    1 +
+   ...81b13df64803fbd36b6c0899131058ea3cc69de72.json |    1 +
+   ...79c526f59440fa73daba01b7daf63289d68044fc7.json |    1 +
+   ...1759d6965c3a9da3b22ee4627657c22fe338e24e4.json |    1 +
+   Backend/notes.txt                                 |    2 +
+   Backend/requirements.txt                          |  169 ++
+   Backend/test_bedrock_call.py                      |   36 +
+   Backend/test_scraper.py                           |    6 +
+   Frontend/eddiebot-ui/eddiebot-ui/.gitignore       |   24 +
+   Frontend/eddiebot-ui/eddiebot-ui/README.md        |   16 +
+   Frontend/eddiebot-ui/eddiebot-ui/eslint.config.js |   29 +
+   Frontend/eddiebot-ui/eddiebot-ui/index.html       |   13 +
+   .../eddiebot-ui/eddiebot-ui/package-lock.json     | 2917 +++++++++++++++++++
+   Frontend/eddiebot-ui/eddiebot-ui/package.json     |   27 +
+   .../eddiebot-ui/eddiebot-ui/public/SiueCougar.png |  Bin 0 -> 48381 bytes
+   Frontend/eddiebot-ui/eddiebot-ui/public/vite.svg  |    1 +
+   Frontend/eddiebot-ui/eddiebot-ui/src/App.css      |  122 +
+   Frontend/eddiebot-ui/eddiebot-ui/src/App.jsx      |  126 +
+   .../eddiebot-ui/src/assets/SIUE_Logo.png          |  Bin 0 -> 5150 bytes
+   .../eddiebot-ui/eddiebot-ui/src/assets/react.svg  |    1 +
+   Frontend/eddiebot-ui/eddiebot-ui/src/index.css    |   69 +
+   Frontend/eddiebot-ui/eddiebot-ui/src/main.jsx     |   10 +
+   Frontend/eddiebot-ui/eddiebot-ui/vite.config.js   |    7 +
+   Frontend/eddiebot-ui/main.py                      |    0
+   62 files changed, 4168 insertions(+)
