@@ -17,7 +17,7 @@ def test_chat_success(client: TestClient, mock_bedrock, mock_retrieve_context) -
 
 def test_chat_no_context_calls_generate_answer(client: TestClient, mock_bedrock) -> None:
     """When retrieval returns no context, endpoint still calls generate_answer with placeholder context."""
-    with patch("app.api.chat.retrieve_context", return_value=""):
+    with patch("app.api.chat.retrieve_context", return_value=("", [])):
         response = client.post(
             "/chat",
             json={"session_id": "test-session-2", "message": "xyz random"},

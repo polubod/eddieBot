@@ -37,7 +37,7 @@ def mock_bedrock():
 def mock_retrieve_context():
     """Patch retrieve_context to return controlled context."""
     with patch("app.api.chat.retrieve_context") as m:
-        m.return_value = "Sample SIUE context for testing."
+        m.return_value = ("Sample SIUE context for testing.", ["https://www.siue.edu/"])
         yield m
 
 
