@@ -263,3 +263,22 @@ Optional sanity check: the repo includes `Backend/test_bedrock_call.py` for manu
 ---
 
 For local development, continue using the **Backend Setup** and **Frontend Setup** sections at the top of this README.
+
+---
+
+### 10. Add sources and expand topics
+
+To add new source pages for an existing topic, edit `Backend/app/services/sources.py` and append URLs to the matching key in `UNIVERSITY_SOURCES` (for example `financial_aid`, `career`, or `library`).
+
+To create a brand-new topic:
+
+1. Add a new key in `UNIVERSITY_SOURCES` in `Backend/app/services/sources.py` with a list of trusted URLs.
+2. Add keyword routing in `Backend/app/services/query_classifier.py` so related user prompts map to your new topic key.
+3. (Optional) If you want custom URL picking behavior for that topic, update `select_sources(...)` in `Backend/app/services/retrieval.py`.
+
+After updating sources, clear or refresh cached content under `Backend/cache/pages/` so the bot fetches the new page text (cached pages are reused for up to 6 hours by `Backend/app/services/web_fetcher.py`).
+
+Quick validation flow:
+- Run the backend (`python app/main.py` from `Backend`).
+- Ask 3-5 prompts for the new/updated topic.
+- Confirm responses are relevant and grounded in your new source pages.
